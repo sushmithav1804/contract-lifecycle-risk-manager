@@ -22,3 +22,7 @@ jwt:
 
 server:
   port: 8080
+  error:
+    whitelabel:
+      enabled: false  # Disables the default Spring error page
+    include-stacktrace: never # Ensures no leaked code details in the API

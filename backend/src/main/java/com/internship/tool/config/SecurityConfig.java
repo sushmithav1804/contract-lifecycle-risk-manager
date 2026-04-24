@@ -17,11 +17,19 @@ public class SecurityConfig {
                 // 1. Disable CSRF so Postman can send POST requests
                 .csrf(csrf -> csrf.disable())
 
-                // 2. Allow the frontend (running on a different port) to talk to the backend
+                // 2. Allow the frontend to talk to the backend
                 .cors(Customizer.withDefaults())
 
-                // 3. Keep Basic Auth active (the login/password you see in console)
+                // 3. Configure Authorization
                 .authorizeHttpRequests(auth -> auth
+                        // Permit access to Swagger/OpenAPI documentation paths
+                        .requestMatchers(
+                                "/v3/api-docs/**",
+                                "/v3/api-docs.yaml",
+                                "/swagger-ui/**",
+                                "/swagger-ui.html"
+                        ).permitAll()
+                        // Everything else still requires a login
                         .anyRequest().authenticated()
                 )
                 .httpBasic(Customizer.withDefaults());
