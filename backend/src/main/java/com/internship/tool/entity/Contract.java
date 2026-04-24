@@ -6,6 +6,7 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import java.io.Serializable; // 1. Added this import
 import java.time.LocalDateTime;
 
 @Entity
@@ -16,13 +17,15 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Contract {
+public class Contract implements Serializable { // 2. Added implements Serializable
+
+    // 3. Recommended: Helps Java track the version of the class during serialization
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // This was missing! It maps Java 'contractName' to SQL 'contract_name'
     @Column(name = "contract_name", nullable = false)
     private String contractName;
 
