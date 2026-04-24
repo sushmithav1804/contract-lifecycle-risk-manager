@@ -1,4 +1,4 @@
-﻿package com.internship.tool.service;
+package com.internship.tool.service;
 
 import com.internship.tool.entity.Contract;
 import com.internship.tool.exception.ResourceNotFoundException;

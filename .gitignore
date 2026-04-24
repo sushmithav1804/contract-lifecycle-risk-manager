@@ -5,3 +5,6 @@ __pycache/
 .idea/
 .vscode/
 *.class
+.mvn/
+mvnw
+mvnw.cmd

@@ -22,21 +22,29 @@ public class Contract {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
-    private String fileName;
+    // This was missing! It maps Java 'contractName' to SQL 'contract_name'
+    @Column(name = "contract_name", nullable = false)
+    private String contractName;
 
+    @Column(name = "vendor_name")
     private String vendorName;
 
+    private String status;
+
+    @Column(name = "risk_score")
     private Double riskScore;
+
+    @Column(name = "file_name", nullable = false)
+    private String fileName;
 
     @Column(columnDefinition = "TEXT")
     private String summary;
 
     @CreatedDate
-    @Column(nullable = false, updatable = false)
+    @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
     @LastModifiedDate
-    @Column(nullable = false)
+    @Column(name = "updated_at", nullable = false)
     private LocalDateTime updatedAt;
 }
