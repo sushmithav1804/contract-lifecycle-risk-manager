@@ -2,6 +2,10 @@ import { useEffect, useState, useContext } from "react";
 import api from "../services/api";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
+import { useEffect, useState, useContext } from "react";
+import api from "../services/api";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
 
 function Contracts() {
   const [contracts, setContracts] = useState([]);
@@ -107,7 +111,7 @@ function Contracts() {
             <tbody>
               {contracts.map((c) => (
                 <tr key={c.id}>
-                  {/* 🔹 CLICKABLE TITLE → DETAIL PAGE */}
+                 
                   <td className="p-2 border">
                     <Link
                       to={`/contracts/${c.id}`}
