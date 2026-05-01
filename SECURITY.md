@@ -43,3 +43,15 @@ This document summarizes five security threats relevant to the project and the A
   3. Enable HTTPS/HSTS in production deployment.
   4. Add dependency vulnerability scanning and regular security regression tests.
   5. Review and tighten CORS policies for production domains.
+## Week 2 Security Sign-off
+
+- JWT support is available in `backend/src/main/java/com/internship/tool/config/JwtUtil.java` and the project includes JWT configuration properties in `backend/src/main/resources/application.yml`.
+- Rate limiting is enforced on the AI endpoint using `flask-limiter` at `30 requests/minute`.
+- Injection protections are implemented across the stack:
+  - prompt injection detection in `ai-service/app.py`
+  - backend input validation for SQL and prompt injection patterns in `backend/src/main/java/com/internship/tool/service/ContractService.java`
+- PII audit:
+  - prompt text is sanitized before processing
+  - no personal data patterns (email, phone, SSN) appear in prompt sample inputs used for tuning or testing
+  - AI service prompt handling avoids storing or returning user PII in responses
+- Sign-off conclusion: Week 2 security controls are documented and the core protections requested are verified in code paths and tests.

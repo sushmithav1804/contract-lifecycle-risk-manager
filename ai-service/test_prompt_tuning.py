@@ -35,6 +35,13 @@ class PromptTuningTest(unittest.TestCase):
             self.assertIn("needs_rewrite", metadata)
             self.assertIn("rewritten_template", metadata)
 
+    def test_prompt_inputs_contain_no_pii(self):
+        pii_markers = ["@", "+1", "(555)", "ssn", "social security", "credit card", "card number"]
+        for prompt_name, inputs in REAL_INPUTS.items():
+            for item in inputs:
+                lower_item = item.lower()
+                self.assertFalse(any(marker in lower_item for marker in pii_markers), f"PII marker found in prompt input for {prompt_name}: {item}")
+
 
 if __name__ == "__main__":
     unittest.main()
