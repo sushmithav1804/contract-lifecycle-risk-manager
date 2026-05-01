@@ -4,3 +4,4 @@ flask
 flask-limiter
 flask-cors
 flask-talisman
+pytest
