@@ -21,3 +21,10 @@ This document summarizes five security threats relevant to the project and the A
 5. Dependency and Supply Chain Risk
    - Outdated or untrusted third-party libraries can introduce vulnerabilities.
    - Keep dependencies up to date and monitor for security advisories.
+
+## Week 1 Security Tests
+
+- Added backend validation for empty input on contract create requests.
+- Added SQL injection pattern detection for contract name and file name.
+- Added prompt injection pattern detection for contract name and file name.
+- Coverage includes tests for empty input, SQL keywords, and prompt injection strings in `backend/src/test/java/com/internship/tool/service/ContractSecurityTest.java`.
